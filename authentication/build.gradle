@@ -1,0 +1,38 @@
+group 'org.homecloud.erp'
+version '1.0-SNAPSHOT'
+description = "Authentication-service for homecloud"
+
+apply plugin: 'war'
+apply plugin: 'maven'
+
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven { url 'https://repository.jboss.org/nexus/content/groups/public-jboss' }
+    maven { url 'https://repository.jboss.org/nexus/content/repositories' }
+    maven { url 'https://repository.jboss.org/nexus/content/repositories/thirdparty-releases' }
+}
+
+sourceSets.main.output.resourcesDir = sourceSets.main.output.classesDir
+compileJava.dependsOn(processResources)
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+    compile "org.homecloud.erp:commons:1.0-SNAPSHOT"
+    compile 'io.jsonwebtoken:jjwt:0.6.0'
+    providedCompile group: 'javax', name: 'javaee-api', version:'7.0'
+
+
+
+    testCompile 'junit:junit:4.11'
+
+    testCompile 'org.jboss.shrinkwrap.resolver:shrinkwrap-resolver-depchain:2.1.0'
+    testCompile 'org.jboss.arquillian:arquillian-bom:1.1.2.Final-wildfly-1'
+    testCompile 'org.jboss.arquillian.junit:arquillian-junit-container:1.1.2.Final-wildfly-1'
+
+    testRuntime 'org.jboss.logging:jboss-logging:3.1.4.GA'
+}

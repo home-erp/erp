@@ -1,0 +1,20 @@
+apply plugin: 'war'
+apply plugin: 'maven'
+
+group = 'org.homecloud.erp'
+version = '1.0-SNAPSHOT'
+description = "Item-service for homecloud"
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    providedCompile group: 'javax', name: 'javaee-api', version:'7.0'
+    compile "org.homecloud.erp:commons:1.0-SNAPSHOT"
+    compile 'org.apache.httpcomponents:httpclient:4.5.1'
+}

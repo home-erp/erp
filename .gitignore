@@ -1,0 +1,7 @@
+lib
+nb-configuration.xml
+target
+.idea
+*.iml
+.gradle
+build
